@@ -1,0 +1,120 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.17.1",
+  "planned_values": {
+    "root_module": {}
+  },
+  "resource_changes": [
+    {
+      "address": "aws_db_instance.main",
+      "mode": "managed",
+      "type": "aws_db_instance",
+      "name": "main",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": [
+          "delete",
+          "create"
+        ],
+        "before": {
+          "identifier": "demo-db",
+          "engine": "postgres",
+          "engine_version": "16.4",
+          "instance_class": "db.t4g.medium",
+          "allocated_storage": 50,
+          "storage_encrypted": false,
+          "deletion_protection": false,
+          "skip_final_snapshot": false,
+          "publicly_accessible": false,
+          "multi_az": false,
+          "username": "app",
+          "password": "example-secret",
+          "arn": "arn:aws:rds:eu-central-1:123456789012:db:demo-db",
+          "id": "db-ABCDEFGHIJKLMNOP",
+          "tags": {
+            "Project": "demo",
+            "Environment": "staging"
+          }
+        },
+        "after": {
+          "identifier": "demo-db",
+          "engine": "postgres",
+          "engine_version": "16.4",
+          "instance_class": "db.t4g.medium",
+          "allocated_storage": 50,
+          "storage_encrypted": true,
+          "deletion_protection": false,
+          "skip_final_snapshot": false,
+          "publicly_accessible": false,
+          "multi_az": false,
+          "username": "app",
+          "password": "example-secret",
+          "arn": null,
+          "id": null,
+          "tags": {
+            "Project": "demo",
+            "Environment": "staging"
+          }
+        },
+        "after_unknown": {
+          "arn": true,
+          "id": true
+        },
+        "before_sensitive": {
+          "password": true
+        },
+        "after_sensitive": {
+          "password": true
+        },
+        "replace_paths": [
+          [
+            "storage_encrypted"
+          ]
+        ]
+      },
+      "action_reason": "replace_because_cannot_update"
+    },
+    {
+      "address": "aws_db_subnet_group.main",
+      "mode": "managed",
+      "type": "aws_db_subnet_group",
+      "name": "main",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": [
+          "no-op"
+        ],
+        "before": {
+          "name": "demo-db",
+          "subnet_ids": [
+            "subnet-0a1b2c3d",
+            "subnet-0e1f2a3b"
+          ]
+        },
+        "after": {
+          "name": "demo-db",
+          "subnet_ids": [
+            "subnet-0a1b2c3d",
+            "subnet-0e1f2a3b"
+          ]
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    }
+  ],
+  "configuration": {
+    "provider_config": {
+      "aws": {
+        "name": "aws",
+        "full_name": "registry.terraform.io/hashicorp/aws"
+      }
+    },
+    "root_module": {}
+  },
+  "timestamp": "2026-11-05T10:00:00Z",
+  "applyable": true,
+  "complete": true,
+  "errored": false
+}
