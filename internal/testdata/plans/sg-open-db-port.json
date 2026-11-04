@@ -1,0 +1,170 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.17.1",
+  "planned_values": {
+    "root_module": {}
+  },
+  "resource_changes": [
+    {
+      "address": "aws_security_group.db",
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "db",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": [
+          "update"
+        ],
+        "before": {
+          "name": "demo-db",
+          "vpc_id": "vpc-0a1b2c3d4e5f60718",
+          "id": "sg-0a1b2c3d4e5f60718",
+          "ingress": [
+            {
+              "from_port": 5432,
+              "to_port": 5432,
+              "protocol": "tcp",
+              "cidr_blocks": [
+                "10.0.0.0/16"
+              ],
+              "ipv6_cidr_blocks": [],
+              "prefix_list_ids": [],
+              "security_groups": [],
+              "self": false,
+              "description": "postgres from vpc"
+            }
+          ],
+          "egress": [],
+          "tags": {
+            "Project": "demo",
+            "Environment": "staging"
+          }
+        },
+        "after": {
+          "name": "demo-db",
+          "vpc_id": "vpc-0a1b2c3d4e5f60718",
+          "id": "sg-0a1b2c3d4e5f60718",
+          "ingress": [
+            {
+              "from_port": 5432,
+              "to_port": 5432,
+              "protocol": "tcp",
+              "cidr_blocks": [
+                "10.0.0.0/16"
+              ],
+              "ipv6_cidr_blocks": [],
+              "prefix_list_ids": [],
+              "security_groups": [],
+              "self": false,
+              "description": "postgres from vpc"
+            },
+            {
+              "from_port": 5432,
+              "to_port": 5432,
+              "protocol": "tcp",
+              "cidr_blocks": [
+                "0.0.0.0/0"
+              ],
+              "ipv6_cidr_blocks": [],
+              "prefix_list_ids": [],
+              "security_groups": [],
+              "self": false,
+              "description": "temporary debug access"
+            }
+          ],
+          "egress": [],
+          "tags": {
+            "Project": "demo",
+            "Environment": "staging"
+          }
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "aws_vpc_security_group_ingress_rule.ssh",
+      "mode": "managed",
+      "type": "aws_vpc_security_group_ingress_rule",
+      "name": "ssh",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "security_group_id": "sg-0f1e2d3c4b5a69788",
+          "cidr_ipv4": "0.0.0.0/0",
+          "cidr_ipv6": null,
+          "from_port": 22,
+          "to_port": 22,
+          "ip_protocol": "tcp",
+          "arn": null,
+          "id": null,
+          "security_group_rule_id": null,
+          "description": "ssh",
+          "tags": null,
+          "tags_all": {}
+        },
+        "after_unknown": {
+          "arn": true,
+          "id": true,
+          "security_group_rule_id": true,
+          "tags_all": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "aws_vpc_security_group_ingress_rule.https",
+      "mode": "managed",
+      "type": "aws_vpc_security_group_ingress_rule",
+      "name": "https",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "security_group_id": "sg-0f1e2d3c4b5a69788",
+          "cidr_ipv4": null,
+          "cidr_ipv6": "::/0",
+          "from_port": 443,
+          "to_port": 443,
+          "ip_protocol": "tcp",
+          "arn": null,
+          "id": null,
+          "security_group_rule_id": null,
+          "description": "https",
+          "tags": null,
+          "tags_all": {}
+        },
+        "after_unknown": {
+          "arn": true,
+          "id": true,
+          "security_group_rule_id": true,
+          "tags_all": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    }
+  ],
+  "configuration": {
+    "provider_config": {
+      "aws": {
+        "name": "aws",
+        "full_name": "registry.terraform.io/hashicorp/aws"
+      }
+    },
+    "root_module": {}
+  },
+  "timestamp": "2026-11-05T10:00:00Z",
+  "applyable": true,
+  "complete": true,
+  "errored": false
+}

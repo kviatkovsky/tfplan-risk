@@ -1,0 +1,6 @@
+[1m[31mCRITICAL[0m  aws_security_group.db                    UPDATE  ingress from 0.0.0.0/0 on port 5432/tcp (PostgreSQL) [2m[TPR-SEC-001][0m
+[1m[31mCRITICAL[0m  aws_vpc_security_group_ingress_rule.ssh  CREATE  ingress from 0.0.0.0/0 on port 22/tcp (SSH) [2m[TPR-SEC-001][0m
+
+[2mPlan: 2 to create, 1 to update.[0m
+[1mRisk score: 80/100 (max severity: critical)[0m
+[1m[31mFAIL: 2 finding(s) at or above critical[0m

@@ -1,0 +1,85 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.17.1",
+  "planned_values": {
+    "root_module": {}
+  },
+  "resource_changes": [
+    {
+      "address": "aws_s3_bucket.logs",
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "logs",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": [
+          "delete"
+        ],
+        "before": {
+          "bucket": "demo-logs-123456789012",
+          "force_destroy": false,
+          "arn": "arn:aws:s3:::demo-logs-123456789012",
+          "id": "demo-logs-123456789012",
+          "tags": {
+            "Project": "demo",
+            "Environment": "staging"
+          }
+        },
+        "after": null,
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": false
+      },
+      "action_reason": "delete_because_no_resource_config"
+    },
+    {
+      "address": "aws_s3_bucket.app",
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "app",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": [
+          "update"
+        ],
+        "before": {
+          "bucket": "demo-app-123456789012",
+          "force_destroy": false,
+          "arn": "arn:aws:s3:::demo-app-123456789012",
+          "id": "demo-app-123456789012",
+          "tags": {
+            "Project": "demo",
+            "Environment": "staging"
+          }
+        },
+        "after": {
+          "bucket": "demo-app-123456789012",
+          "force_destroy": false,
+          "arn": "arn:aws:s3:::demo-app-123456789012",
+          "id": "demo-app-123456789012",
+          "tags": {
+            "Project": "demo",
+            "Environment": "staging",
+            "Owner": "platform"
+          }
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    }
+  ],
+  "configuration": {
+    "provider_config": {
+      "aws": {
+        "name": "aws",
+        "full_name": "registry.terraform.io/hashicorp/aws"
+      }
+    },
+    "root_module": {}
+  },
+  "timestamp": "2026-11-05T10:00:00Z",
+  "applyable": true,
+  "complete": true,
+  "errored": false
+}

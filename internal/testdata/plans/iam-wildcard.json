@@ -1,0 +1,157 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.17.1",
+  "planned_values": {
+    "root_module": {}
+  },
+  "resource_changes": [
+    {
+      "address": "aws_iam_policy.ci",
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "ci",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": [
+          "update"
+        ],
+        "before": {
+          "name": "demo-ci",
+          "path": "/",
+          "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Deploy\",\"Effect\":\"Allow\",\"Action\":[\"s3:GetObject\",\"s3:PutObject\"],\"Resource\":\"arn:aws:s3:::demo-artifacts-123456789012/*\"}]}",
+          "arn": "arn:aws:iam::123456789012:policy/demo-ci",
+          "id": "arn:aws:iam::123456789012:policy/demo-ci",
+          "tags": {
+            "Project": "demo",
+            "Environment": "staging"
+          }
+        },
+        "after": {
+          "name": "demo-ci",
+          "path": "/",
+          "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"Deploy\",\"Effect\":\"Allow\",\"Action\":[\"s3:GetObject\",\"s3:PutObject\"],\"Resource\":\"arn:aws:s3:::demo-artifacts-123456789012/*\"},{\"Sid\":\"Everything\",\"Effect\":\"Allow\",\"Action\":\"*\",\"Resource\":\"*\"}]}",
+          "arn": "arn:aws:iam::123456789012:policy/demo-ci",
+          "id": "arn:aws:iam::123456789012:policy/demo-ci",
+          "tags": {
+            "Project": "demo",
+            "Environment": "staging"
+          }
+        },
+        "after_unknown": {},
+        "before_sensitive": {},
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "aws_iam_role_policy_attachment.ci_admin",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "ci_admin",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "role": "demo-ci",
+          "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess",
+          "id": null
+        },
+        "after_unknown": {
+          "id": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "aws_iam_role_policy.launcher",
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "launcher",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "name": "launcher",
+          "role": "demo-ci",
+          "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"iam:PassRole\",\"ec2:RunInstances\"],\"Resource\":\"*\"}]}",
+          "id": null
+        },
+        "after_unknown": {
+          "id": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "aws_iam_role_policy.generated",
+      "mode": "managed",
+      "type": "aws_iam_role_policy",
+      "name": "generated",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "name": "generated",
+          "role": "demo-ci",
+          "policy": null,
+          "id": null
+        },
+        "after_unknown": {
+          "id": true,
+          "policy": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    },
+    {
+      "address": "aws_sqs_queue.jobs",
+      "mode": "managed",
+      "type": "aws_sqs_queue",
+      "name": "jobs",
+      "provider_name": "registry.terraform.io/hashicorp/aws",
+      "change": {
+        "actions": [
+          "create"
+        ],
+        "before": null,
+        "after": {
+          "name": "demo-jobs",
+          "arn": null,
+          "id": null,
+          "url": null
+        },
+        "after_unknown": {
+          "arn": true,
+          "id": true,
+          "url": true
+        },
+        "before_sensitive": false,
+        "after_sensitive": {}
+      }
+    }
+  ],
+  "configuration": {
+    "provider_config": {
+      "aws": {
+        "name": "aws",
+        "full_name": "registry.terraform.io/hashicorp/aws"
+      }
+    },
+    "root_module": {}
+  },
+  "timestamp": "2026-11-05T10:00:00Z",
+  "applyable": true,
+  "complete": true,
+  "errored": false
+}

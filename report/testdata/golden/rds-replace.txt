@@ -1,0 +1,5 @@
+CRITICAL  aws_db_instance.main  REPLACE  stateful resource replaced because storage_encrypted false -> true forces replacement: the existing aws_db_instance is destroyed and a new, empty one is created -> data loss [TPR-DATA-001]
+
+Plan: 1 to replace.
+Risk score: 55/100 (max severity: critical)
+FAIL: 1 finding(s) at or above critical

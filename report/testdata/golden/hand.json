@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "tool": {
+    "name": "tfplan-risk",
+    "version": "v0.0.0-test"
+  },
+  "plan": {
+    "format_version": "1.2",
+    "terraform_version": "1.17.1"
+  },
+  "summary": {
+    "score": 26,
+    "max_severity": "high",
+    "changes": {
+      "create": 1,
+      "delete": 14,
+      "no-op": 3
+    },
+    "findings": {
+      "critical": 0,
+      "high": 1,
+      "info": 1,
+      "low": 0,
+      "medium": 0
+    },
+    "suppressed": 1
+  },
+  "gate": {
+    "fail_on": null,
+    "max_score": 20,
+    "failed": true,
+    "reason": "risk score 26 is above max-score 20"
+  },
+  "findings": [
+    {
+      "rule_id": "TPR-PLAN-001",
+      "severity": "high",
+      "category": "availability",
+      "address": "",
+      "action": "",
+      "message": "14 resources deleted (threshold 10)",
+      "suggestion": "split the change",
+      "suppressed": false
+    },
+    {
+      "rule_id": "TPR-SEC-002",
+      "severity": "info",
+      "category": "security",
+      "address": "aws_iam_role_policy.p",
+      "action": "create",
+      "message": "policy is known only after apply",
+      "suggestion": "review",
+      "suppressed": false
+    },
+    {
+      "rule_id": "TPR-DATA-001",
+      "severity": "critical",
+      "category": "data-loss",
+      "address": "module.sandbox.aws_s3_bucket.tmp",
+      "action": "delete",
+      "message": "stateful resource deleted -> data loss",
+      "suggestion": "snapshot",
+      "suppressed": true,
+      "suppress_reason": "sandbox is disposable"
+    }
+  ]
+}

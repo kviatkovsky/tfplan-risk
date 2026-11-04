@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "tool": {
+    "name": "tfplan-risk",
+    "version": "v0.0.0-test"
+  },
+  "plan": {
+    "format_version": "1.2",
+    "terraform_version": "1.17.1"
+  },
+  "summary": {
+    "score": 80,
+    "max_severity": "critical",
+    "changes": {
+      "create": 2,
+      "update": 1
+    },
+    "findings": {
+      "critical": 2,
+      "high": 0,
+      "info": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "suppressed": 0
+  },
+  "gate": {
+    "fail_on": "critical",
+    "max_score": null,
+    "failed": true,
+    "reason": "2 finding(s) at or above critical"
+  },
+  "findings": [
+    {
+      "rule_id": "TPR-SEC-001",
+      "severity": "critical",
+      "category": "security",
+      "address": "aws_security_group.db",
+      "action": "update",
+      "message": "ingress from 0.0.0.0/0 on port 5432/tcp (PostgreSQL)",
+      "suggestion": "Restrict the source to known CIDRs or a security group / prefix list. Reach databases and hosts through a VPN, bastion or SSM Session Manager instead of public ingress.",
+      "suppressed": false
+    },
+    {
+      "rule_id": "TPR-SEC-001",
+      "severity": "critical",
+      "category": "security",
+      "address": "aws_vpc_security_group_ingress_rule.ssh",
+      "action": "create",
+      "message": "ingress from 0.0.0.0/0 on port 22/tcp (SSH)",
+      "suggestion": "Restrict the source to known CIDRs or a security group / prefix list. Reach databases and hosts through a VPN, bastion or SSM Session Manager instead of public ingress.",
+      "suppressed": false
+    }
+  ]
+}

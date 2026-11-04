@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "tool": {
+    "name": "tfplan-risk",
+    "version": "v0.0.0-test"
+  },
+  "plan": {
+    "format_version": "1.2",
+    "terraform_version": "1.17.1"
+  },
+  "summary": {
+    "score": 55,
+    "max_severity": "critical",
+    "changes": {
+      "no-op": 1,
+      "replace": 1
+    },
+    "findings": {
+      "critical": 1,
+      "high": 0,
+      "info": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "suppressed": 0
+  },
+  "gate": {
+    "fail_on": "critical",
+    "max_score": null,
+    "failed": true,
+    "reason": "1 finding(s) at or above critical"
+  },
+  "findings": [
+    {
+      "rule_id": "TPR-DATA-001",
+      "severity": "critical",
+      "category": "data-loss",
+      "address": "aws_db_instance.main",
+      "action": "replace",
+      "message": "stateful resource replaced because storage_encrypted false -> true forces replacement: the existing aws_db_instance is destroyed and a new, empty one is created -> data loss",
+      "suggestion": "Snapshot or back up the data first. Add lifecycle { prevent_destroy = true } to stateful resources. If this is a rename or refactor, use a `moved` block instead of delete+create. For replacements, check whether the attribute can be changed in place (e.g. allow_major_version_upgrade).",
+      "suppressed": false
+    }
+  ]
+}
