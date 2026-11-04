@@ -1,0 +1,9 @@
+CRITICAL  aws_iam_policy.ci                        UPDATE  policy: statement "Everything": Action "*" on Resource "*" (full administrator access) (added) [TPR-SEC-002]
+CRITICAL  aws_iam_role_policy_attachment.ci_admin  CREATE  policy_arn: attaches AWS managed policy AdministratorAccess [TPR-SEC-002]
+HIGH      aws_iam_role_policy.launcher             CREATE  policy: statement 0: "iam:PassRole" on Resource "*" lets the principal pass any role to a service (privilege escalation) [TPR-SEC-002]
+MEDIUM    aws_iam_role_policy.launcher             CREATE  policy: statement 0: write actions ec2:RunInstances on Resource "*" [TPR-SEC-002]
+INFO      aws_iam_role_policy.generated            CREATE  policy is known only after apply; wildcard grants cannot be checked, review it manually [TPR-SEC-002]
+
+Plan: 4 to create, 1 to update.
+Risk score: 86/100 (max severity: critical)
+FAIL: 2 finding(s) at or above critical

@@ -1,0 +1,5 @@
+[1m[31mCRITICAL[0m  aws_s3_bucket.logs  DELETE  stateful resource deleted (removed from configuration) -> data loss; all objects are lost (the delete fails on a non-empty bucket unless force_destroy = true) [2m[TPR-DATA-001][0m
+
+[2mPlan: 1 to update, 1 to delete.[0m
+[1mRisk score: 55/100 (max severity: critical)[0m
+[1m[31mFAIL: 1 finding(s) at or above critical[0m

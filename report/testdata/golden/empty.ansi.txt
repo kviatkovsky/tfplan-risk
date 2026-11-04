@@ -1,0 +1,4 @@
+[1mNo risky changes found.[0m
+
+[2mPlan: no changes.[0m
+[1mRisk score: 0/100[0m

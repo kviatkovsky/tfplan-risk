@@ -1,0 +1,6 @@
+HIGH      (plan)                         14 resources deleted (threshold 10) [TPR-PLAN-001]
+INFO      aws_iam_role_policy.p  CREATE  policy is known only after apply [TPR-SEC-002]
+
+Plan: 1 to create, 14 to delete. 1 finding(s) suppressed by config.
+Risk score: 26/100 (max severity: high)
+FAIL: risk score 26 is above max-score 20
