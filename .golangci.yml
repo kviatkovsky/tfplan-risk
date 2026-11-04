@@ -1,0 +1,65 @@
+version: "2"
+
+run:
+  timeout: 5m
+
+linters:
+  default: standard # errcheck, govet, ineffassign, staticcheck, unused
+  enable:
+    - bodyclose
+    - copyloopvar
+    - errorlint
+    - gocritic
+    - godot
+    - gosec
+    - misspell
+    - nilerr
+    - nolintlint
+    - perfsprint
+    - prealloc
+    - revive
+    - unconvert
+    - unparam
+    - usestdlibvars
+    - wrapcheck
+  settings:
+    revive:
+      rules:
+        - name: exported
+        - name: package-comments
+        - name: var-naming
+        - name: error-strings
+        - name: receiver-naming
+        - name: indent-error-flow
+    gosec:
+      excludes:
+        - G204 # --terraform-bin intentionally executes a user-supplied binary
+        - G304 # reading user-supplied plan/config paths is the tool's job
+    wrapcheck:
+      ignore-sigs:
+        - .Errorf(
+        - errors.New(
+        - errors.Join(
+        - .Err()
+        - .Flush()
+        - .Decode(
+        - .Parse(
+        - json.Unmarshal(
+      ignore-package-globs:
+        - github.com/kviatkovsky/tfplan-risk/*
+  exclusions:
+    presets:
+      - comments
+      - std-error-handling
+    rules:
+      - path: _test\.go
+        linters: [gosec, wrapcheck, errcheck, prealloc, unparam]
+
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/kviatkovsky/tfplan-risk
